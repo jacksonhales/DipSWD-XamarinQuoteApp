@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuoteApp.QuotesPage" Padding="20">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+            Default="20,30,20,20"
+            Android="20,40,20,20">
+        </OnPlatform>
+    </ContentPage.Padding>
+    
+    <ContentPage.Content>
+        <Grid VerticalOptions="Fill" HorizontalOptions="Fill">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" HorizontalOptions="Fill" VerticalOptions="Center" x:Name="btnNextQuote" Clicked="Handle_Clicked" BackgroundColor="Black" TextColor="White" Text="Next Quote" FontSize="Large"></Button>
+            <Label Grid.Row ="1" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding 
+                Source={x:Reference sdrFontSize},
+                Path=Value,
+                StringFormat='Font size: {0:N0}'}" x:Name="lblFontSize"></Label>
+            <Slider Grid.Row="2" HorizontalOptions="Fill" VerticalOptions="Center" Maximum="50" Minimum="16" x:Name="sdrFontSize" ValueChanged="Handle_ValueChanged"></Slider>
+            <Label Grid.Row="3" HorizontalOptions="Fill" VerticalOptions="Fill" FontSize="{Binding 
+                Source={x:Reference sdrFontSize},
+                Path=Value}" x:Name="lblQuote"></Label>
+        </Grid>
+    </ContentPage.Content>
+    
+</ContentPage>
